@@ -54,6 +54,7 @@ interface CasinoData {
   footer_text?: string
   popup_text?: string
   
+
   // Колірні теми
   main_background?: string
   secondary_background?: string
@@ -61,7 +62,7 @@ interface CasinoData {
   button_text?: string
   text_color?: string
   color_highlight_text?: string
-  
+
   // Rich text content
   content?: string
   
@@ -78,19 +79,19 @@ interface CasinoData {
   [key: string]: any
 }
 
-export default function ModernCasino() {
+export default function ClassicCasino() {
   const data: CasinoData = require('../data.json')
-  const accentColor = data.accent_color || '#00d4ff'
+  const accentColor = data.accent_color || '#d4a574'
   const [openSubmenu, setOpenSubmenu] = useState<number | null>(null)
 
 
   // Отримуємо кольори з data або використовуємо дефолтні
-  const mainBackground = data.main_background || '#0a0a14' // default dark blue
-  const secondaryBackground = data.secondary_background || '#1a1a2e' // default darker blue
-  const buttonBackground = data.button_background || '#00d4ff' // default amber
-  const buttonText = data.button_text || '#ffffff' // default dark
+  const mainBackground = data.main_background || '#1a1a2e' // default dark blue
+  const secondaryBackground = data.secondary_background || '#16213e' // default darker blue
+  const buttonBackground = data.button_background || '#d4af37' // default amber
+  const buttonText = data.button_text || '#1a1a2e' // default dark
   const textColor = data.text_color || '#e0e0e0' // default light
-  const colorHighlightText = data.color_highlight_text || '#00d4ff' // default amber
+  const colorHighlightText = data.color_highlight_text || '#d4af37' // default amber
 
 
   // Функція для заміни змінних у content
@@ -173,25 +174,21 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         body {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          background: #0a0e27;
-          color: #ffffff;
+          font-family: 'Georgia', serif;
+          background: #2c1810;
+          color: #f5e6d3;
         }
 
         .container {
-          max-width: 1400px;
+          max-width: 1200px;
           margin: 0 auto;
           padding: 0 20px;
         }
 
         header {
-          padding: 25px 0;
-          background: rgba(10, 14, 39, 0.8);
-          backdrop-filter: blur(10px);
-          position: sticky;
-          top: 0;
-          z-index: 100;
-          border-bottom: 1px solid ${accentColor}33;
+          background: #1a0f08;
+          padding: 20px 0;
+          border-bottom: 3px solid #8b4513;
         }
 
         .header-content {
@@ -201,17 +198,14 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .logo {
-          font-size: 28px;
-          font-weight: 800;
-          background: linear-gradient(135deg, ${accentColor}, #ff00ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-size: 32px;
+          font-weight: bold;
+          color: ${accentColor};
         }
 
         nav {
           display: flex;
-          gap: 30px;
+          gap: 25px;
           align-items: center;
         }
 
@@ -220,9 +214,8 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .menu-item > a {
-          color: #ffffff;
+          color: #f5e6d3;
           text-decoration: none;
-          font-weight: 500;
           transition: color 0.3s;
           display: flex;
           align-items: center;
@@ -237,9 +230,9 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
           position: absolute;
           top: 100%;
           left: 0;
-          background: #0a0a1a;
+          background: #2c1810;
           border: 1px solid ${accentColor};
-          border-radius: 12px;
+          border-radius: 8px;
           padding: 10px 0;
           min-width: 200px;
           z-index: 1000;
@@ -247,7 +240,6 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
           visibility: hidden;
           transform: translateY(-10px);
           transition: all 0.3s ease;
-          box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
         .menu-item:hover .submenu,
@@ -259,14 +251,14 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
         .submenu a {
           display: block;
-          color: #ffffff;
+          color: #f5e6d3;
           text-decoration: none;
           padding: 10px 20px;
           transition: all 0.3s;
         }
 
         .submenu a:hover {
-          background: rgba(0, 212, 255, 0.1);
+          background: rgba(212, 165, 116, 0.1);
           color: ${accentColor};
           padding-left: 25px;
         }
@@ -288,7 +280,7 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         footer nav a {
-          color: #ffffff;
+          color: #f5e6d3;
           text-decoration: none;
           font-size: 14px;
           transition: color 0.3s;
@@ -301,88 +293,70 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
         .hero {
           text-align: center;
-          padding: 120px 20px;
-          background: radial-gradient(circle at center, ${accentColor}22 0%, transparent 70%);
+          padding: 80px 20px;
+          background: linear-gradient(180deg, #3d2415 0%, #2c1810 100%);
         }
 
         .hero-badge {
           display: inline-block;
-          background: ${accentColor}22;
+          background: rgba(212, 165, 116, 0.2);
           color: ${accentColor};
           padding: 8px 20px;
-          border-radius: 20px;
+          border-radius: 5px;
           font-size: 14px;
           margin-bottom: 20px;
-          border: 1px solid ${accentColor}44;
+          border: 1px solid ${accentColor};
         }
 
         .hero h1 {
-          font-size: 72px;
-          font-weight: 900;
-          margin-bottom: 20px;
-          background: linear-gradient(135deg, #ffffff, ${accentColor});
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-size: 56px;
+          color: ${accentColor};
+          margin-bottom: 30px;
         }
 
         .hero p {
-          font-size: 24px;
-          color: #b0b0b0;
+          font-size: 22px;
           margin-bottom: 40px;
+          color: #f5e6d3;
         }
 
         .cta-button {
-          background: linear-gradient(135deg, ${accentColor}, #ff00ff);
-          color: #ffffff;
-          padding: 18px 50px;
-          font-size: 18px;
-          font-weight: 700;
-          border: none;
-          border-radius: 50px;
+          background: #8b4513;
+          color: #f5e6d3;
+          padding: 15px 50px;
+          font-size: 20px;
+          font-weight: bold;
+          border: 2px solid ${accentColor};
+          border-radius: 5px;
           cursor: pointer;
           transition: all 0.3s;
           text-decoration: none;
           display: inline-block;
-          box-shadow: 0 10px 40px ${accentColor}44;
         }
 
         .cta-button:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 15px 50px ${accentColor}66;
+          background: #a0522d;
+          transform: scale(1.05);
         }
 
         .features {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           gap: 30px;
-          padding: 80px 0;
+          padding: 60px 0;
         }
 
         .feature {
-          background: linear-gradient(135deg, #1a1f3a 0%, #0f1329 100%);
-          padding: 40px;
-          border-radius: 20px;
-          border: 1px solid ${accentColor}33;
+          background: #3d2415;
+          padding: 30px;
+          border: 2px solid #8b4513;
           text-align: center;
-          transition: all 0.3s;
-        }
-
-        .feature:hover {
-          border-color: ${accentColor};
-          transform: translateY(-5px);
         }
 
         .feature h3 {
           color: ${accentColor};
           margin-bottom: 15px;
           font-size: 24px;
-          font-weight: 700;
-        }
-
-        .feature p {
-          color: #b0b0b0;
-          line-height: 1.6;
         }
 
         .slots-section {
@@ -391,48 +365,43 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
         .section-title {
           text-align: center;
-          font-size: 48px;
-          font-weight: 900;
-          margin-bottom: 60px;
-          background: linear-gradient(135deg, #ffffff, ${accentColor});
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-size: 42px;
+          color: ${accentColor};
+          margin-bottom: 50px;
         }
 
         .slots-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
           gap: 30px;
         }
 
         .slot-card {
-          background: linear-gradient(135deg, #1a1f3a 0%, #0f1329 100%);
+          background: #3d2415;
           padding: 0;
-          border-radius: 25px;
-          border: 2px solid ${accentColor}44;
+          border: 3px solid #8b4513;
           text-align: center;
-          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          transition: all 0.4s;
           overflow: hidden;
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .slot-card:hover {
+          transform: translateY(-8px);
           border-color: ${accentColor};
-          transform: translateY(-10px) scale(1.02);
-          box-shadow: 0 20px 60px ${accentColor}55;
+          box-shadow: 0 12px 30px rgba(212, 165, 116, 0.4);
         }
 
         .slot-logo-container {
           position: relative;
           width: 100%;
           height: 220px;
-          background: linear-gradient(180deg, ${accentColor}22 0%, #0a0e27 100%);
+          background: linear-gradient(180deg, #4d3020 0%, #2c1810 100%);
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          border-bottom: 2px solid ${accentColor}44;
+          border-bottom: 3px solid #8b4513;
         }
 
         .slot-logo {
@@ -449,18 +418,18 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
           max-width: 100%;
           max-height: 100%;
           object-fit: contain;
-          border-radius: 15px;
           transition: transform 0.4s;
-          filter: drop-shadow(0 4px 15px ${accentColor}66);
+          filter: drop-shadow(0 4px 10px rgba(139, 69, 19, 0.5));
         }
 
         .slot-card:hover .slot-logo img {
-          transform: scale(1.12) rotate(2deg);
+          transform: scale(1.08);
         }
 
         .slot-logo-placeholder {
           font-size: 80px;
-          opacity: 0.3;
+          opacity: 0.4;
+          color: ${accentColor};
         }
 
         .slot-content {
@@ -468,55 +437,52 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .slot-card h3 {
-          color: #ffffff;
+          color: ${accentColor};
           font-size: 22px;
           font-weight: 700;
           margin-bottom: 15px;
-          text-shadow: 0 2px 10px ${accentColor}88;
         }
 
         .slot-link {
           display: inline-block;
-          background: linear-gradient(135deg, ${accentColor}, #ff00ff);
-          color: #ffffff;
+          background: #8b4513;
+          color: #f5e6d3;
           padding: 14px 35px;
-          border-radius: 30px;
+          border: 2px solid ${accentColor};
           text-decoration: none;
-          font-weight: 700;
+          font-weight: bold;
           font-size: 16px;
           transition: all 0.3s;
-          box-shadow: 0 4px 20px ${accentColor}66;
           text-transform: uppercase;
-          letter-spacing: 1.5px;
+          letter-spacing: 1px;
         }
 
         .slot-link:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 30px ${accentColor}88;
-          background: linear-gradient(135deg, #ff00ff, ${accentColor});
+          background: #a0522d;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(212, 165, 116, 0.4);
         }
 
         footer {
           text-align: center;
-          padding: 50px 0;
-          border-top: 1px solid ${accentColor}33;
-          color: #666;
-          margin-top: 80px;
+          padding: 40px 0;
+          border-top: 3px solid #8b4513;
+          color: #8b7355;
+          margin-top: 60px;
         }
 
         .content-section {
           padding: 60px 0;
-          background: linear-gradient(135deg, #1a1f3a22 0%, #0f132922 100%);
-          border-radius: 20px;
+          background: rgba(61, 36, 21, 0.3);
+          border: 2px solid #8b4513;
           margin: 40px 0;
-          border: 1px solid ${accentColor}22;
         }
 
         .content-wrapper {
           max-width: 900px;
           margin: 0 auto;
           padding: 0 20px;
-          color: #ffffff;
+          color: #f5e6d3;
           line-height: 1.8;
           font-size: 18px;
         }
@@ -540,7 +506,7 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .content-wrapper a:hover {
-          color: #ff00ff;
+          color: #f5e6d3;
         }
 
         .content-wrapper ul, .content-wrapper ol {
@@ -553,24 +519,23 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .content-wrapper blockquote {
-          border-left: 4px solid ${accentColor};
+          border-left: 4px solid #8b4513;
           padding-left: 20px;
           margin: 20px 0;
           font-style: italic;
-          color: #b0b0b0;
+          color: ${accentColor};
         }
 
         .content-wrapper img {
           max-width: 100%;
           height: auto;
-          border-radius: 15px;
+          border: 2px solid #8b4513;
           margin: 20px 0;
-          border: 2px solid ${accentColor}44;
         }
 
         @media (max-width: 768px) {
           .hero h1 {
-            font-size: 42px;
+            font-size: 36px;
           }
 
           .features {
@@ -579,11 +544,6 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
           .slots-grid {
             grid-template-columns: 1fr;
-          }
-
-          nav a {
-            margin-left: 15px;
-            font-size: 14px;
           }
 
           .content-wrapper {
@@ -595,7 +555,7 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
       <div className="container">
         <header>
           <div className="header-content">
-            <div className="logo">⚡ {data.site_name || data.name}</div>
+            <div className="logo">🎰 {data.site_name || data.name}</div>
             <nav>
               {data.header_menu && data.header_menu.length > 0 ? (
                 data.header_menu.map((item, index) => (
@@ -629,8 +589,8 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
               ) : (
                 <>
                   <a href="#games">Games</a>
-                  <a href="#features">Features</a>
                   <a href="#about">About</a>
+                  <a href="#contact">Contact</a>
                 </>
               )}
             </nav>
@@ -639,23 +599,23 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
         <section className="hero">
           {data.hero_badge && <div className="hero-badge">{data.hero_badge}</div>}
-          <h1>{data.hero_title || data.site_name || data.name}</h1>
-          <p>{data.hero_subtitle || data.tagline || 'Next Generation Casino Experience'}</p>
-          <button className="cta-button">{data.cta_text || 'Play Now'}</button>
+          <h1>{data.hero_title || 'Welcome to Classic Casino'}</h1>
+          <p>{data.hero_subtitle || data.tagline || 'Experience timeless casino entertainment'}</p>
+          <button className="cta-button">{data.cta_text || 'Start Playing'}</button>
         </section>
 
         <section className="features">
           <div className="feature">
-            <h3>⚡ Lightning Fast</h3>
-            <p>{data.features_list?.split('\n')[0] || 'Instant gameplay with cutting-edge technology'}</p>
+            <h3>🎲 Classic Games</h3>
+            <p>{data.features_list?.split('\n')[0] || 'Enjoy traditional casino favorites'}</p>
           </div>
           <div className="feature">
-            <h3>🎮 Modern Games</h3>
-            <p>{data.features_list?.split('\n')[1] || 'Latest slots and casino games'}</p>
+            <h3>💰 Big Wins</h3>
+            <p>{data.features_list?.split('\n')[1] || 'Huge jackpots waiting for you'}</p>
           </div>
           <div className="feature">
-            <h3>🔐 Secure</h3>
-            <p>{data.features_list?.split('\n')[2] || 'Bank-level security and encryption'}</p>
+            <h3>🎁 Bonuses</h3>
+            <p>{data.features_list?.split('\n')[2] || 'Generous welcome offers'}</p>
           </div>
         </section>
 
@@ -691,11 +651,11 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
                             alt={slot.Name || `Slot ${index + 1}`}
                             onError={(e) => {
                               e.currentTarget.style.display = 'none';
-                              e.currentTarget.parentElement!.innerHTML = '<div class="slot-logo-placeholder">⚡</div>';
+                              e.currentTarget.parentElement!.innerHTML = '<div class="slot-logo-placeholder">🎰</div>';
                             }}
                           />
                         ) : (
-                          <div className="slot-logo-placeholder">⚡</div>
+                          <div className="slot-logo-placeholder">🎰</div>
                         )}
                       </div>
                     </div>
