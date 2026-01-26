@@ -3,7 +3,7 @@
   "site_name": null,
   "html_head": null,
   "url": "vavada-bet.info",
-  "template": "classic-casino",
+  "template": "tupchiy",
   "language_code": "en",
   "allow_indexing": true,
   "redirect_404s_to_homepage": true,
@@ -84,6 +84,6 @@
   },
   "header_menu": [],
   "footer_menu": [],
-  "_generated_at": "2026-01-26T13:02:54.063Z",
+  "_generated_at": "2026-01-26T13:04:33.842Z",
   "_version": "1.0.0"
 }

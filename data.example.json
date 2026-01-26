@@ -1,0 +1,67 @@
+{
+  "name": "LuckySpin Casino",
+  "description": "Join LuckySpin for the best online casino experience! Get 200% welcome bonus up to €1,000 plus 100 free spins. Play premium slots, enjoy VIP rewards, and win big today!",
+  "url": "luckyspin.com",
+  "language_code": "en",
+  "allow_indexing": true,
+  "redirect_404s_to_homepage": true,
+  "use_www_version": false,
+  "tupchiy_site_name": "LuckySpin",
+  "tupchiy_hero_title": "Get 200% Bonus",
+  "tupchiy_hero_subtitle": "Up to €1,000 + 100 Free Spins",
+  "tupchiy_hero_bonus": "🎰 Welcome Bonus",
+  "tupchiy_cta_text": "Play Now",
+  "tupchiy_popup_bonus": "🎁 Special Offer: 100% up to $500 + 200 Free Spins on Your First Deposit!",
+  "Slots": [
+    {
+      "id": 1,
+      "Name": "Gem Rush Deluxe",
+      "logo": "https://example.com/slots/gem-rush.jpg",
+      "link": "https://casino.example.com/play/gem-rush"
+    },
+    {
+      "id": 2,
+      "Name": "Pharaoh's Gold",
+      "logo": "https://example.com/slots/pharaoh.jpg",
+      "link": "https://casino.example.com/play/pharaoh"
+    },
+    {
+      "id": 3,
+      "Name": "Lucky 777 Classic",
+      "logo": "https://example.com/slots/lucky-777.jpg",
+      "link": "https://casino.example.com/play/lucky-777"
+    },
+    {
+      "id": 4,
+      "Name": "Wild West Adventure",
+      "logo": "https://example.com/slots/wild-west.jpg",
+      "link": "https://casino.example.com/play/wild-west"
+    },
+    {
+      "id": 5,
+      "Name": "Dragon's Fire",
+      "logo": "https://example.com/slots/dragon.jpg",
+      "link": "https://casino.example.com/play/dragon-fire"
+    },
+    {
+      "id": 6,
+      "Name": "Ocean Treasure",
+      "logo": "https://example.com/slots/ocean.jpg",
+      "link": "https://casino.example.com/play/ocean"
+    },
+    {
+      "id": 7,
+      "Name": "Cosmic Slots Mega",
+      "logo": "https://example.com/slots/cosmic.jpg",
+      "link": "https://casino.example.com/play/cosmic"
+    },
+    {
+      "id": 8,
+      "Name": "Viking Fortune Quest",
+      "logo": "https://example.com/slots/viking.jpg",
+      "link": "https://casino.example.com/play/viking"
+    }
+  ]
+}
+
+
