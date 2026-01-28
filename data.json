@@ -3,7 +3,7 @@
   "site_name": null,
   "html_head": null,
   "url": "vavada-bet.info",
-  "template": "modern-casino",
+  "template": "luxury-casino",
   "language_code": "en",
   "allow_indexing": true,
   "redirect_404s_to_homepage": true,
@@ -84,8 +84,8 @@
   },
   "header_menu": [],
   "footer_menu": [],
-  "_generated_at": "2026-01-28T00:38:49.856Z",
+  "_generated_at": "2026-01-28T00:41:10.380Z",
   "_version": "1.0.0",
-  "_last_deploy": "2026-01-28T00:38:50.422Z",
-  "_deploy_trigger": "lra82"
+  "_last_deploy": "2026-01-28T00:41:10.914Z",
+  "_deploy_trigger": "nu92n"
 }

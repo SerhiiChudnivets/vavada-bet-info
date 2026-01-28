@@ -33,7 +33,7 @@ interface MenuItem {
 interface CasinoData {
   // Базові поля
   name: string
-  html_head?: string
+  html_head?: string  // Замість description
   url: string
   template?: string
   language_code: string
@@ -54,6 +54,7 @@ interface CasinoData {
   footer_text?: string
   popup_text?: string
   
+
   // Колірні теми
   main_background?: string
   secondary_background?: string
@@ -61,7 +62,7 @@ interface CasinoData {
   button_text?: string
   text_color?: string
   color_highlight_text?: string
-  
+
   // Rich text content
   content?: string
   
@@ -78,19 +79,19 @@ interface CasinoData {
   [key: string]: any
 }
 
-export default function ModernCasino() {
+export default function LuxuryCasino() {
   const data: CasinoData = require('../data.json')
-  const accentColor = data.accent_color || '#00d4ff'
+  const accentColor = data.accent_color || '#d4af37'
   const [openSubmenu, setOpenSubmenu] = useState<number | null>(null)
 
 
   // Отримуємо кольори з data або використовуємо дефолтні
-  const mainBackground = data.main_background || '#0a0a14' // default dark blue
+  const mainBackground = data.main_background || '#0f0f1e' // default dark blue
   const secondaryBackground = data.secondary_background || '#1a1a2e' // default darker blue
-  const buttonBackground = data.button_background || '#00d4ff' // default amber
-  const buttonText = data.button_text || '#ffffff' // default dark
-  const textColor = data.text_color || '#e0e0e0' // default light
-  const colorHighlightText = data.color_highlight_text || '#00d4ff' // default amber
+  const buttonBackground = data.button_background || '#d4af37' // default amber
+  const buttonText = data.button_text || '#0f0f1e' // default dark
+  const textColor = data.text_color || '#f0f0f0' // default light
+  const colorHighlightText = data.color_highlight_text || '#d4af37' // default amber
 
 
   // Функція для заміни змінних у content
@@ -98,19 +99,26 @@ export default function ModernCasino() {
     if (!content) return content
     
     let result = content
+    
+    // Замінюємо всі змінні типу {{variable_name}}
     const variableRegex = /\{\{([^}]+)\}\}/g
     
     result = result.replace(variableRegex, (match, variableName) => {
       const trimmedName = variableName.trim()
+      
+      // Спробуємо знайти значення в data
       if (data[trimmedName] !== undefined && data[trimmedName] !== null) {
         return String(data[trimmedName])
       }
+      
+      // Якщо змінна не знайдена, повертаємо оригінальний текст
       return match
     })
     
     return result
   }
 
+  // Обробляємо content якщо він є
   
   // Генеруємо динамічні стилі з кольорами
   const dynamicStyles = `
@@ -173,40 +181,30 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         body {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-          background: #0a0e27;
-          color: #ffffff;
+          font-family: 'Playfair Display', serif;
+          background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+          color: #e0e0e0;
         }
 
         .container {
-          max-width: 1400px;
+          max-width: 1200px;
           margin: 0 auto;
           padding: 0 20px;
         }
 
         header {
-          padding: 25px 0;
-          background: rgba(10, 14, 39, 0.8);
-          backdrop-filter: blur(10px);
-          position: sticky;
-          top: 0;
-          z-index: 100;
-          border-bottom: 1px solid ${accentColor}33;
-        }
-
-        .header-content {
           display: flex;
           justify-content: space-between;
           align-items: center;
+          padding: 30px 0;
+          border-bottom: 2px solid ${accentColor};
         }
 
         .logo {
           font-size: 28px;
-          font-weight: 800;
-          background: linear-gradient(135deg, ${accentColor}, #ff00ff);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-weight: bold;
+          color: ${accentColor};
+          text-decoration: none;
         }
 
         nav {
@@ -220,9 +218,8 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .menu-item > a {
-          color: #ffffff;
+          color: #e0e0e0;
           text-decoration: none;
-          font-weight: 500;
           transition: color 0.3s;
           display: flex;
           align-items: center;
@@ -237,9 +234,9 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
           position: absolute;
           top: 100%;
           left: 0;
-          background: #0a0a1a;
+          background: #16213e;
           border: 1px solid ${accentColor};
-          border-radius: 12px;
+          border-radius: 8px;
           padding: 10px 0;
           min-width: 200px;
           z-index: 1000;
@@ -247,7 +244,6 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
           visibility: hidden;
           transform: translateY(-10px);
           transition: all 0.3s ease;
-          box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
         }
 
         .menu-item:hover .submenu,
@@ -259,14 +255,14 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
         .submenu a {
           display: block;
-          color: #ffffff;
+          color: #e0e0e0;
           text-decoration: none;
           padding: 10px 20px;
           transition: all 0.3s;
         }
 
         .submenu a:hover {
-          background: rgba(0, 212, 255, 0.1);
+          background: rgba(212, 175, 55, 0.1);
           color: ${accentColor};
           padding-left: 25px;
         }
@@ -288,7 +284,7 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         footer nav a {
-          color: #ffffff;
+          color: #e0e0e0;
           text-decoration: none;
           font-size: 14px;
           transition: color 0.3s;
@@ -301,55 +297,53 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
         .hero {
           text-align: center;
-          padding: 120px 20px;
-          background: radial-gradient(circle at center, ${accentColor}22 0%, transparent 70%);
+          padding: 100px 0;
+          background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
         }
 
         .hero-badge {
           display: inline-block;
-          background: ${accentColor}22;
+          background: rgba(212, 175, 55, 0.2);
           color: ${accentColor};
           padding: 8px 20px;
           border-radius: 20px;
           font-size: 14px;
           margin-bottom: 20px;
-          border: 1px solid ${accentColor}44;
         }
 
         .hero h1 {
-          font-size: 72px;
-          font-weight: 900;
+          font-size: 64px;
+          color: ${accentColor};
           margin-bottom: 20px;
-          background: linear-gradient(135deg, #ffffff, ${accentColor});
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .hero p {
-          font-size: 24px;
-          color: #b0b0b0;
+          font-size: 20px;
+          color: #e0e0e0;
           margin-bottom: 40px;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
         }
 
         .cta-button {
-          background: linear-gradient(135deg, ${accentColor}, #ff00ff);
-          color: #ffffff;
-          padding: 18px 50px;
+          background: linear-gradient(135deg, ${accentColor} 0%, #f4d03f 100%);
+          color: #1a1a2e;
+          padding: 15px 40px;
           font-size: 18px;
-          font-weight: 700;
+          font-weight: bold;
           border: none;
           border-radius: 50px;
           cursor: pointer;
-          transition: all 0.3s;
+          transition: transform 0.3s, box-shadow 0.3s;
           text-decoration: none;
           display: inline-block;
-          box-shadow: 0 10px 40px ${accentColor}44;
         }
 
         .cta-button:hover {
           transform: translateY(-3px);
-          box-shadow: 0 15px 50px ${accentColor}66;
+          box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
         }
 
         .features {
@@ -360,24 +354,17 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .feature {
-          background: linear-gradient(135deg, #1a1f3a 0%, #0f1329 100%);
-          padding: 40px;
-          border-radius: 20px;
-          border: 1px solid ${accentColor}33;
+          background: rgba(255, 255, 255, 0.05);
+          padding: 30px;
+          border-radius: 10px;
+          border: 1px solid ${accentColor};
           text-align: center;
-          transition: all 0.3s;
-        }
-
-        .feature:hover {
-          border-color: ${accentColor};
-          transform: translateY(-5px);
         }
 
         .feature h3 {
           color: ${accentColor};
           margin-bottom: 15px;
           font-size: 24px;
-          font-weight: 700;
         }
 
         .feature p {
@@ -391,48 +378,45 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
         .section-title {
           text-align: center;
-          font-size: 48px;
-          font-weight: 900;
-          margin-bottom: 60px;
-          background: linear-gradient(135deg, #ffffff, ${accentColor});
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
+          font-size: 42px;
+          color: ${accentColor};
+          margin-bottom: 50px;
+          text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .slots-grid {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
           gap: 30px;
         }
 
         .slot-card {
-          background: linear-gradient(135deg, #1a1f3a 0%, #0f1329 100%);
+          background: linear-gradient(145deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
           padding: 0;
-          border-radius: 25px;
-          border: 2px solid ${accentColor}44;
+          border-radius: 20px;
+          border: 2px solid ${accentColor};
+          overflow: hidden;
           text-align: center;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          overflow: hidden;
-          box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
         }
 
         .slot-card:hover {
-          border-color: ${accentColor};
           transform: translateY(-10px) scale(1.02);
-          box-shadow: 0 20px 60px ${accentColor}55;
+          box-shadow: 0 20px 50px rgba(212, 175, 55, 0.4);
+          border-color: #f4d03f;
         }
 
         .slot-logo-container {
           position: relative;
           width: 100%;
           height: 220px;
-          background: linear-gradient(180deg, ${accentColor}22 0%, #0a0e27 100%);
+          background: linear-gradient(180deg, rgba(212, 175, 55, 0.15) 0%, rgba(0, 0, 0, 0.3) 100%);
           display: flex;
           align-items: center;
           justify-content: center;
           overflow: hidden;
-          border-bottom: 2px solid ${accentColor}44;
+          border-bottom: 2px solid rgba(212, 175, 55, 0.3);
         }
 
         .slot-logo {
@@ -449,13 +433,13 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
           max-width: 100%;
           max-height: 100%;
           object-fit: contain;
-          border-radius: 15px;
+          border-radius: 12px;
           transition: transform 0.4s;
-          filter: drop-shadow(0 4px 15px ${accentColor}66);
+          filter: drop-shadow(0 4px 12px rgba(212, 175, 55, 0.3));
         }
 
         .slot-card:hover .slot-logo img {
-          transform: scale(1.12) rotate(2deg);
+          transform: scale(1.1);
         }
 
         .slot-logo-placeholder {
@@ -468,55 +452,54 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .slot-card h3 {
-          color: #ffffff;
+          color: ${accentColor};
           font-size: 22px;
           font-weight: 700;
           margin-bottom: 15px;
-          text-shadow: 0 2px 10px ${accentColor}88;
+          text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .slot-link {
           display: inline-block;
-          background: linear-gradient(135deg, ${accentColor}, #ff00ff);
-          color: #ffffff;
+          background: linear-gradient(135deg, ${accentColor} 0%, #f4d03f 100%);
+          color: #1a1a2e;
           padding: 14px 35px;
           border-radius: 30px;
           text-decoration: none;
-          font-weight: 700;
+          font-weight: bold;
           font-size: 16px;
           transition: all 0.3s;
-          box-shadow: 0 4px 20px ${accentColor}66;
+          box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
           text-transform: uppercase;
-          letter-spacing: 1.5px;
+          letter-spacing: 1px;
         }
 
         .slot-link:hover {
-          transform: translateY(-3px);
-          box-shadow: 0 8px 30px ${accentColor}88;
-          background: linear-gradient(135deg, #ff00ff, ${accentColor});
+          transform: translateY(-2px);
+          box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+          background: linear-gradient(135deg, #f4d03f 0%, ${accentColor} 100%);
         }
 
         footer {
           text-align: center;
-          padding: 50px 0;
-          border-top: 1px solid ${accentColor}33;
-          color: #666;
+          padding: 40px 0;
+          border-top: 2px solid ${accentColor};
+          color: #888;
           margin-top: 80px;
         }
 
         .content-section {
           padding: 60px 0;
-          background: linear-gradient(135deg, #1a1f3a22 0%, #0f132922 100%);
-          border-radius: 20px;
+          background: rgba(255, 255, 255, 0.02);
+          border-radius: 15px;
           margin: 40px 0;
-          border: 1px solid ${accentColor}22;
         }
 
         .content-wrapper {
           max-width: 900px;
           margin: 0 auto;
           padding: 0 20px;
-          color: #ffffff;
+          color: #e0e0e0;
           line-height: 1.8;
           font-size: 18px;
         }
@@ -540,7 +523,7 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         }
 
         .content-wrapper a:hover {
-          color: #ff00ff;
+          color: #f4d03f;
         }
 
         .content-wrapper ul, .content-wrapper ol {
@@ -563,14 +546,13 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
         .content-wrapper img {
           max-width: 100%;
           height: auto;
-          border-radius: 15px;
+          border-radius: 10px;
           margin: 20px 0;
-          border: 2px solid ${accentColor}44;
         }
 
         @media (max-width: 768px) {
           .hero h1 {
-            font-size: 42px;
+            font-size: 40px;
           }
 
           .features {
@@ -594,68 +576,67 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
 
       <div className="container">
         <header>
-          <div className="header-content">
-            <div className="logo">⚡ {data.site_name || data.name}</div>
-            <nav>
-              {data.header_menu && data.header_menu.length > 0 ? (
-                data.header_menu.map((item, index) => (
-                  <div key={item.id || index} className="menu-item">
-                    <a 
-                      href={item.url} 
-                      target={item.open_in_new_tab ? '_blank' : '_self'}
-                      rel={item.open_in_new_tab ? 'noopener noreferrer' : undefined}
-                    >
-                      {item.label}
-                      {item.submenu && item.submenu.length > 0 && (
-                        <span className="menu-arrow">▼</span>
-                      )}
-                    </a>
+          <div className="logo">{data.logo_url || '🎰'} {data.site_name || data.name}</div>
+          <nav>
+            {data.header_menu && data.header_menu.length > 0 ? (
+              data.header_menu.map((item, index) => (
+                <div key={item.id || index} className="menu-item">
+                  <a 
+                    href={item.url} 
+                    target={item.open_in_new_tab ? '_blank' : '_self'}
+                    rel={item.open_in_new_tab ? 'noopener noreferrer' : undefined}
+                  >
+                    {item.label}
                     {item.submenu && item.submenu.length > 0 && (
-                      <div className="submenu">
-                        {item.submenu.map((subitem, subindex) => (
-                          <a
-                            key={subitem.id || subindex}
-                            href={subitem.url}
-                            target={subitem.open_in_new_tab ? '_blank' : '_self'}
-                            rel={subitem.open_in_new_tab ? 'noopener noreferrer' : undefined}
-                          >
-                            {subitem.label}
-                          </a>
-                        ))}
-                      </div>
+                      <span className="menu-arrow">▼</span>
                     )}
-                  </div>
-                ))
-              ) : (
-                <>
-                  <a href="#games">Games</a>
-                  <a href="#features">Features</a>
-                  <a href="#about">About</a>
-                </>
-              )}
-            </nav>
-          </div>
+                  </a>
+                  {item.submenu && item.submenu.length > 0 && (
+                    <div className="submenu">
+                      {item.submenu.map((subitem, subindex) => (
+                        <a
+                          key={subitem.id || subindex}
+                          href={subitem.url}
+                          target={subitem.open_in_new_tab ? '_blank' : '_self'}
+                          rel={subitem.open_in_new_tab ? 'noopener noreferrer' : undefined}
+                        >
+                          {subitem.label}
+                        </a>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))
+            ) : (
+              <>
+                <a href="#games">Games</a>
+                <a href="#promotions">Promotions</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+              </>
+            )}
+          </nav>
         </header>
 
         <section className="hero">
           {data.hero_badge && <div className="hero-badge">{data.hero_badge}</div>}
-          <h1>{data.hero_title || data.site_name || data.name}</h1>
-          <p>{data.hero_subtitle || data.tagline || 'Next Generation Casino Experience'}</p>
+          <h1>{data.hero_title || 'Welcome to Luxury Casino'}</h1>
+          <p>{data.hero_subtitle || data.tagline || 'Experience the finest gaming entertainment'}</p>
           <button className="cta-button">{data.cta_text || 'Play Now'}</button>
         </section>
 
         <section className="features">
           <div className="feature">
-            <h3>⚡ Lightning Fast</h3>
-            <p>{data.features_list?.split('\n')[0] || 'Instant gameplay with cutting-edge technology'}</p>
+            <h3>🎮 Premium Games</h3>
+            <p>{data.features_list?.split('\n')[0] || 'Access exclusive casino games with stunning graphics and smooth gameplay'}</p>
           </div>
           <div className="feature">
-            <h3>🎮 Modern Games</h3>
-            <p>{data.features_list?.split('\n')[1] || 'Latest slots and casino games'}</p>
+            <h3>💎 VIP Rewards</h3>
+            <p>{data.features_list?.split('\n')[1] || 'Earn loyalty points and unlock exclusive VIP benefits'}</p>
           </div>
           <div className="feature">
-            <h3>🔐 Secure</h3>
-            <p>{data.features_list?.split('\n')[2] || 'Bank-level security and encryption'}</p>
+            <h3>🔒 Secure & Fair</h3>
+            <p>{data.features_list?.split('\n')[2] || 'Licensed and regulated with advanced security measures'}</p>
           </div>
         </section>
 
@@ -691,11 +672,11 @@ const processedContent = data.content ? replaceVariables(data.content) : ''
                             alt={slot.Name || `Slot ${index + 1}`}
                             onError={(e) => {
                               e.currentTarget.style.display = 'none';
-                              e.currentTarget.parentElement!.innerHTML = '<div class="slot-logo-placeholder">⚡</div>';
+                              e.currentTarget.parentElement!.innerHTML = '<div class="slot-logo-placeholder">🎰</div>';
                             }}
                           />
                         ) : (
-                          <div className="slot-logo-placeholder">⚡</div>
+                          <div className="slot-logo-placeholder">🎰</div>
                         )}
                       </div>
                     </div>
