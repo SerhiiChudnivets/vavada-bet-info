@@ -1,6 +1,6 @@
 {
   "name": "vavada-bet.info",
-  "site_name": null,
+  "site_name": "хуй",
   "html_head": null,
   "url": "vavada-bet.info",
   "template": "luxury-casino",
@@ -84,8 +84,8 @@
   },
   "header_menu": [],
   "footer_menu": [],
-  "_generated_at": "2026-01-28T00:54:59.247Z",
+  "_generated_at": "2026-01-29T13:22:54.858Z",
   "_version": "1.0.0",
-  "_last_deploy": "2026-01-28T00:54:59.802Z",
-  "_deploy_trigger": "r8mqh"
+  "_last_deploy": "2026-01-29T13:22:55.489Z",
+  "_deploy_trigger": "0cuyx"
 }
